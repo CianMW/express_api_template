@@ -1,24 +1,19 @@
 import express  from "express";
-import cors from "cors";
 import listEndpoints from "express-list-endpoints";
-import sampleRoute from "./services/sampleRoute/index.js";
+import { app } from "./app.js";
 // import sampleRoute from "./services/sampleRoute"
 
-const server = express();
 
-server.use(cors("*"))
-server.use(express.json())
-
-// Routes
-server.use("/sampleRoute", sampleRoute )
+// express servr is initialized and exported from app.js 
+// app.js also contains the routes for the server
 
 
 // PORT
 const port = 3001;
 
 
-server.listen(port, () => {
-    console.table(listEndpoints(server));
+app.listen(port, () => {
+    console.table(listEndpoints(app));
     console.log(`Server is running on port ${port}`);
 });
 
