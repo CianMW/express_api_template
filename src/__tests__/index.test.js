@@ -1,8 +1,20 @@
 import { app } from "../app.js";
 import supertest from "supertest";
+import jest from "jest"
 // Using modules cross-env is needed with node env variable set in the "test" script
 const request = supertest(app)
 
+// Manual Mock Testing : 
+// global.fetch = jest.fn(() =>
+//   Promise.resolve({
+//     json: () => Promise.resolve({ rates: { CAD: 1.42 } }),
+//   })
+// );
+
+
+// Is run before each test, can be used to reset/disable 
+beforeEach(() => {
+})
 
 describe("Testing the testing environment", () => {
 
@@ -12,7 +24,6 @@ describe("Testing the testing environment", () => {
 
 
 })
-
 
 
 describe("testing the app endpoints", () => {

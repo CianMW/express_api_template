@@ -1,25 +1,42 @@
 import express from "express";
+import authorizationMiddle from "../../middlewares/authorization";
+import verifyTokenMiddle from "../../middlewares/verifyTokenMiddle";
 
 // setup the express route
 const sampleRoute = express.Router();
 
 // set out each method for the route
-sampleRoute.get("/", async (req, res) => {
+sampleRoute
+.get("/login", authorizationMiddle, async (req, res) => {
+        try {
+            const { email, password } = req.body;
+            if (user) {
+              const token = await jwtAuth(user);
+              if (!token) {
+                next(createHttpError(403));
+              } else {
+                res.cookie("token", token)
+                res.status(200).send({ token })
+              }
+            } else {
+              next(createHttpError(404, "User credentials error"));
+            }
+          } catch (error) {
+            next(error);
+          }
+})
+
+.put("/samplePut", verifyTokenMiddle, async (req, res) => {
+
     try {
-        
-        const task = await taskData.find({});
-        if(task === null) {
-            res.status(404).json({
-                message: "No tasks found"
-            })
-        } else if (task){
-            res.status(200).send({data: task})
+        if (req.user) {
+          res.send(req.user);
+        } else {
+          next(createHttpError(404, `Author with the name: ${user.name} not found!`));
         }
-    } catch (error) {
-        console.log(error)
-        res.status(400).send(error)
-    }
-        
+      } catch (error) {
+        next(error);
+      }
 })
 
 
