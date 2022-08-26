@@ -1,6 +1,7 @@
 import express  from "express";
 import listEndpoints from "express-list-endpoints";
 import { app } from "./app.js";
+import dotenv from "dotenv/config"
 // import sampleRoute from "./services/sampleRoute"
 
 
@@ -9,7 +10,7 @@ import { app } from "./app.js";
 
 
 // PORT
-const port = 3001;
+const port = process.env.PORT||3002;
 
 
 app.listen(port, () => {
