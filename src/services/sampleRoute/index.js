@@ -1,6 +1,6 @@
 import express from "express";
-import authorizationMiddle from "../../middlewares/authorization";
-import verifyTokenMiddle from "../../middlewares/verifyTokenMiddle";
+import authorizationMiddle from "../../middlewares/authorization.js";
+import verifyTokenMiddle from "../../middlewares/verifyTokenMiddle.js";
 
 // setup the express route
 const sampleRoute = express.Router();

@@ -1,5 +1,4 @@
 import createHttpError from "http-errors"
-import AuthorModel from "../services/authors/authorSchema.js"
 import verifyDecodeJWT from "../tools/verifyAndDecode.js"
 
  const verifyTokenMiddle = async (req, res, next) => {

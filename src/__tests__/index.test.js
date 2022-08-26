@@ -29,7 +29,7 @@ describe("Testing the testing environment", () => {
 describe("testing the app endpoints", () => {
 
 
-    // If using a databes express-mongoose, you can use the following code to test the database:
+    // If using a databese express-mongoose, you can use the following code to test the database:
         {/*
             beforeAll(done => {
                 console.log("This gets run before all tests in this suite")
